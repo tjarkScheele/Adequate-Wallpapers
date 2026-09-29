@@ -8,35 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var startDate = Date()
+    @State private var username: String = ""
+    @State private var showFileImporter = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button("Set Wallpaper URL"){
-                if let url = Bundle.main.url(
-                    forResource: "spring_background",
-                    withExtension: "jpg"
-                ) {
-                    print(url)
-                    
-                    if let screen = NSScreen.main {
-                        do {
-                            try NSWorkspace.shared.setDesktopImageURL(
-                                url,
-                                for: screen,
-                                options: [:]
-                            )
-                        } catch {
-                            print("Failed to set wallpaper: \(error)")
+        VStack(alignment: .leading) {
+                    Text("Add a new Event")
+                    TableRow()
+                    Divider()
+                    Text("Edit current Events")
+                    TableRow()
+                    TableRow()
+                    Divider()
+                    Text("Edit seaonal Wallpapers")
+                    TableRow()
+                    TableRow()
+                    Button("Set Wallpaper URL"){
+                        if let url = Bundle.main.url(
+                            forResource: "spring_background",
+                            withExtension: "jpg"
+                        ) {
+                            print(url)
+                            
+                            if let screen = NSScreen.main {
+                                do {
+                                    try NSWorkspace.shared.setDesktopImageURL(
+                                        url,
+                                        for: screen,
+                                        options: [:]
+                                    )
+                                } catch {
+                                    print("Failed to set wallpaper: \(error)")
+                                }
+                            }
                         }
+                        
                     }
                 }
-                
-            }
-        }
-        .padding()
+                .padding()
+        
     }
 }
 

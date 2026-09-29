@@ -12,6 +12,8 @@ struct Adequate_WallpapersApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(width: 350)
         }
+        .windowResizability(.contentSize)
     }
 }
